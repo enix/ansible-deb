@@ -1,0 +1,61 @@
+# make sure we run a cw-debian system with all requirements
+- name: This will be skipped if this a debian 8, fails otherwise
+  fail:
+    msg: "This is not a debian 8"
+  when: (ansible_distribution == "Debian" and ansible_distribution_version|version_compare("8", ">="))|bool == false
+
+- name : Make sure we don't have debian wheezy repos
+  file:
+    dest: /etc/apt/sources.list.d/wheezy.list
+    state: absent
+
+- name: Remove original repo
+  file:
+    dest: /etc/apt/sources.list
+    state: absent
+    backup: yes
+
+- name: Add apt proxy configuration
+  copy:
+    src: proxy.conf
+    dest: /etc/apt/apt.conf.d/proxy.conf
+    mode: 0644
+    owner: root
+    group: root
+    backup: yes
+
+- name : Add the jessie base repository
+  apt_repository:
+    repo: "deb http://httpredir.debian.org/debian jessie main contrib non-free"
+    mode: 0644
+    state: present
+    update_cache: yes
+
+- name : Add the jessie security repository
+  apt_repository:
+    repo: "deb http://security.debian.org/ jessie/updates main contrib non-free"
+    mode: 0644
+    state: present
+    update_cache: yes
+
+- name : Add the jessie-updates repository
+  apt_repository:
+    repo: "deb http://httpredir.debian.org/debian jessie-updates main contrib non-free"
+    mode: 0644
+    state: present
+    update_cache: yes
+
+- name : Add the Jessie-backports repository
+  apt_repository:
+    repo: "deb http://httpredir.debian.org/debian jessie-backports main contrib non-free"
+    mode: 0644
+    state: present
+    update_cache: yes
+  when: use_jessie_backports is defined and use_jessie_backports|bool
+
+- name : Remove the Jessie-backports repository
+  apt_repository:
+    repo: "deb http://httpredir.debian.org/debian jessie-backports main contrib non-free"
+    state: absent
+    update_cache: yes
+  when: use_jessie_backports is not defined or not use_jessie_backports|bool
