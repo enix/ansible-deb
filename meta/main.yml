@@ -1,0 +1,27 @@
+galaxy_info:
+  author: Laurent Corbes
+  description: Ansible role to deploy deb repositories
+  company: Enix Hosting (http://www.enix.fr)
+  license: license GPLv2
+
+  min_ansible_version: 2.1
+
+  #
+  # Below are all platforms currently available. Just uncomment
+  # the ones that apply to your role. If you don't see your
+  # platform on this list, let us know and we'll get it added!
+  #
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+
+  galaxy_tags:
+    - apt
+    - software
+    - repository
+
+dependencies: []
