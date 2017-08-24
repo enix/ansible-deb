@@ -1,6 +1,6 @@
 ---
 
-- name: "Checking Debian based OS"
+- name: "Checking system OS"
   fail:
     msg: "This is not a Debian based distribution"
   when: ansible_os_family != "Debian"
@@ -25,38 +25,31 @@
 #     group: root
 #     backup: yes
 
-- name : Add the jessie base repository
+- name: Add the base repositories (include security)
   apt_repository:
-    repo: "deb http://httpredir.debian.org/debian jessie main contrib non-free"
+    repo: "{{ item }}"
     mode: 0644
     state: present
-    update_cache: yes
+    update_cache: no
+  with_items:
+    - "{{ deb__repos[ ansible_distribution ].base_repos }}"
 
-- name : Add the jessie security repository
-  apt_repository:
-    repo: "deb http://security.debian.org/ jessie/updates main contrib non-free"
-    mode: 0644
-    state: present
-    update_cache: yes
 
-- name : Add the jessie-updates repository
-  apt_repository:
-    repo: "deb http://httpredir.debian.org/debian jessie-updates main contrib non-free"
-    mode: 0644
-    state: present
-    update_cache: yes
+# - name : Add the jessie-updates repository
+#   apt_repository:
+#     repo: "deb http://httpredir.debian.org/debian jessie-updates main contrib non-free"
+#     mode: 0644
+#     state: present
+#     update_cache: yes
+#
+# - name : Add the Jessie-backports repository
+#   apt_repository:
+#     repo: "deb http://httpredir.debian.org/debian jessie-backports main contrib non-free"
+#     mode: 0644
+#     state: present
+#     update_cache: yes
+#   when: use_jessie_backports is defined and use_jessie_backports|bool
 
-- name : Add the Jessie-backports repository
-  apt_repository:
-    repo: "deb http://httpredir.debian.org/debian jessie-backports main contrib non-free"
-    mode: 0644
-    state: present
+- name: Update software cache
+  apt:
     update_cache: yes
-  when: use_jessie_backports is defined and use_jessie_backports|bool
-
-- name : Remove the Jessie-backports repository
-  apt_repository:
-    repo: "deb http://httpredir.debian.org/debian jessie-backports main contrib non-free"
-    state: absent
-    update_cache: yes
-  when: use_jessie_backports is not defined or not use_jessie_backports|bool

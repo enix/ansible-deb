@@ -1,2 +1,5 @@
 ---
 # defaults file for deb
+
+deb__distribution: "{{ ansible_distribution }}"
+deb__release: "{{ ansible_distribution_release }}"

@@ -18,7 +18,9 @@ Role Variables
 
 This roles comes preloaded with almost every available default. You can override each one in your hosts/group vars, in your inventory, or in your play. See the annotated defaults in `defaults/main.yml` for help in configuration. All provided variables start with `deb__`.
 
-- `deb__` - desc
+- `deb__distribution` - Distribution selected for source software installation. Default to `{{ ansible_distribution }}`. Options are ["Debian", "Ubuntu"].
+- `deb__release` - Distribution release software suite. Default to `{{ ansible_distribution_release }}`. Can be override for release upgrade for example.
+
 
 Dependencies
 ------------
@@ -63,11 +65,12 @@ Still to do
 -----------
 
 - var to Erase distro default sources
-- add extra options
+- add extra repositories options
 - var to disable recommends installation
 - var to add a proxy configuration
 - Add Devuan support
 - Add update, dist-upgrade, autoremove, clean tasks
+- Add option to add src repositories
 
 Changelog
 ---------

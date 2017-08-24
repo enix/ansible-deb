@@ -1,2 +1,8 @@
 ---
 # vars file for roletemplate
+
+deb__repos:
+  Debian:
+    base_repos:
+      - "deb http://deb.debian.org/debian/ {{ ansible_distribution_release }} main contrib non-free"
+      - "deb http://security.debian.org/ {{ ansible_distribution_release }}/updates main contrib non-free"
