@@ -33,6 +33,8 @@
     update_cache: no
   with_items:
     - "{{ deb__repos[ ansible_distribution ].base_repos }}"
+  notify:
+    - Update cache
 
 
 - name: Add the backports repository
@@ -45,6 +47,8 @@
     - "{{ deb__repos[ ansible_distribution ].backports }}"
   when:
     - deb__backports
+  notify:
+    - Update cache
 
 - name: Add the updates repository
   apt_repository:
@@ -56,8 +60,5 @@
     - "{{ deb__repos[ ansible_distribution ].updates }}"
   when:
     - deb__updates
-
-- name: Update software cache
-  apt:
-    update_cache: yes
-    cache_valid_time: 600
+  notify:
+    - Update cache

@@ -1,10 +1,6 @@
 ---
 # handlers file for $ROLE
 
-# - name: restart $service
-#   sudo: yes
-#   service: name=$service state=restarted
-
-# - name: reload $service
-#   sudo: yes
-#   service: name=$service state=reloaded
+- name: Update cache
+  apt:
+    update_cache: yes
