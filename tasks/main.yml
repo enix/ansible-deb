@@ -84,6 +84,7 @@
     repo: "{{ item }}"
     mode: 0644
     state: present
+    update_cache: no
   with_items:
     - "{{ deb__extra_repositories }}"
   notify: Update cache
