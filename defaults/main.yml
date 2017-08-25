@@ -3,3 +3,7 @@
 
 deb__distribution: "{{ ansible_distribution }}"
 deb__release: "{{ ansible_distribution_release }}"
+deb__backports: false
+deb__stable_updates: false
+deb__ubuntu_universe: true
+deb__ubuntu_multiverse: true
