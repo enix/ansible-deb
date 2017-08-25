@@ -35,20 +35,27 @@
     - "{{ deb__repos[ ansible_distribution ].base_repos }}"
 
 
-# - name : Add the jessie-updates repository
-#   apt_repository:
-#     repo: "deb http://httpredir.debian.org/debian jessie-updates main contrib non-free"
-#     mode: 0644
-#     state: present
-#     update_cache: yes
-#
-# - name : Add the Jessie-backports repository
-#   apt_repository:
-#     repo: "deb http://httpredir.debian.org/debian jessie-backports main contrib non-free"
-#     mode: 0644
-#     state: present
-#     update_cache: yes
-#   when: use_jessie_backports is defined and use_jessie_backports|bool
+- name: Add the backports repository
+  apt_repository:
+    repo: "{{ item }}"
+    mode: 0644
+    state: present
+    update_cache: no
+  with_items:
+    - "{{ deb__repos[ ansible_distribution ].backports }}"
+  when:
+    - deb__backports
+
+- name: Add the updates repository
+  apt_repository:
+    repo: "{{ item }}"
+    mode: 0644
+    state: present
+    update_cache: no
+  with_items:
+    - "{{ deb__repos[ ansible_distribution ].updates }}"
+  when:
+    - deb__updates
 
 - name: Update software cache
   apt:

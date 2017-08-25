@@ -8,7 +8,7 @@ deb__repos:
       - "deb http://security.debian.org/ {{ ansible_distribution_release }}/updates main contrib non-free"
     backports:
       - "deb http://deb.debian.org/debian/ {{ ansible_distribution_release }}-backports main contrib non-free"
-    stable_updates:
+    updates:
       - "deb http://deb.debian.org/debian/ {{ ansible_distribution_release }}-updates main contrib non-free"
   Ubuntu:
     base_repos:
@@ -16,5 +16,5 @@ deb__repos:
       - "deb http://security.ubuntu.com/ubuntu {{ ansible_distribution_release }}-security main restricted {{ 'universe' if deb__ubuntu_universe else ''}} {{ 'multiverse' if deb__ubuntu_multiverse else ''}}"
     backports:
       - "deb http://archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }}-backports main restricted {{ 'universe' if deb__ubuntu_universe else ''}} {{ 'multiverse' if deb__ubuntu_multiverse else ''}}"
-    stable_updates:
+    updates:
       - "deb http://archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }}-updates main restricted {{ 'universe' if deb__ubuntu_universe else ''}} {{ 'multiverse' if deb__ubuntu_multiverse else ''}}"

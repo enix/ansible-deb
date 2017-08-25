@@ -20,7 +20,10 @@ This roles comes preloaded with almost every available default. You can override
 
 - `deb__distribution` - Distribution selected for source software installation. Default to `{{ ansible_distribution }}`. Options are ["Debian", "Ubuntu"].
 - `deb__release` - Distribution release software suite. Default to `{{ ansible_distribution_release }}`. Can be override for release upgrade for example.
-
+- `deb__backports` - Enable the backports repository. *Only supported on stable distributions*. Default: false.
+- `deb__updates` - Enable the updates repository. *Only supported on stable distributions*. Default: false.
+- `deb__ubuntu_universe` - Enable the universe section of Ubuntu repositories. Default: true.
+- `deb__ubuntu_multiverse` - Enable the multiverse section of Ubuntu repositories. Default: true.
 
 Dependencies
 ------------
@@ -71,6 +74,7 @@ Still to do
 - Add Devuan support
 - Add update, dist-upgrade, autoremove, clean tasks
 - Add option to add src repositories
+- Move final update task to a handler if repo changed
 
 Changelog
 ---------
