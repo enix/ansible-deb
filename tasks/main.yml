@@ -53,8 +53,7 @@
     update_cache: no
   with_items:
     - "{{ deb__repos[ ansible_distribution ].base_repos }}"
-  notify:
-    - Update cache
+  notify: Update cache
 
 - name: Add the backports repository
   apt_repository:
@@ -66,8 +65,7 @@
     - "{{ deb__repos[ ansible_distribution ].backports }}"
   when:
     - deb__backports
-  notify:
-    - Update cache
+  notify: Update cache
 
 - name: Add the updates repository
   apt_repository:
@@ -79,5 +77,13 @@
     - "{{ deb__repos[ ansible_distribution ].updates }}"
   when:
     - deb__updates
-  notify:
-    - Update cache
+  notify: Update cache
+
+- name: Add extra repositories
+  apt_repository:
+    repo: "{{ item }}"
+    mode: 0644
+    state: present
+  with_items:
+    - "{{ deb__extra_repositories }}"
+  notify: Update cache

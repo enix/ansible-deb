@@ -8,3 +8,4 @@ deb__updates: false
 deb__ubuntu_universe: true
 deb__ubuntu_multiverse: true
 deb__clean_sources: false
+deb__extra_repositories: []

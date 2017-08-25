@@ -25,6 +25,8 @@ This roles comes preloaded with almost every available default. You can override
 - `deb__ubuntu_universe` - Enable the universe section of Ubuntu repositories. Default: `true`.
 - `deb__ubuntu_multiverse` - Enable the multiverse section of Ubuntu repositories. Default: `true`.
 - `deb__clean_sources` - Remove existing sources. Default is false, options are `["distribution", "all"]`. _"distribution"_ clean `/etc/apt/sources.list` whereas _"all"_ clean all `*.list` found files.
+- `deb__extra_repositories` - List of other repositories to add. Default: [].
+
 
 Dependencies
 ------------
@@ -68,7 +70,6 @@ You can also use the role as a playbook. You will be asked which hosts to provis
 Still to do
 -----------
 
-- Add extra repositories options
 - var to disable recommends installation
 - var to add a proxy configuration
 - Add Devuan support
