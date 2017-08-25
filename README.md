@@ -68,8 +68,7 @@ You can also use the role as a playbook. You will be asked which hosts to provis
 Still to do
 -----------
 
-- var to Erase distro default sources
-- add extra repositories options
+- Add extra repositories options
 - var to disable recommends installation
 - var to add a proxy configuration
 - Add Devuan support

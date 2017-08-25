@@ -5,6 +5,12 @@
     msg: "This is not a Debian based distribution"
   when: ansible_os_family != "Debian"
 
+- name: "Install python-apt"
+  apt:
+    name: python-apt
+    state: present
+  when: ansible_distribution == "Debian"
+
 - name: "Cleaning distribution included repositories lists"
   file:
     path: "{{ item }}"
