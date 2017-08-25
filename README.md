@@ -1,7 +1,7 @@
 eNiXHosting.deb
 =================
 
-A role for deploying and configuring deb softwar sources list on Debian based distributions using [Ansible](http://www.ansible.com/).
+A role for deploying and configuring deb software sources list on Debian based distributions using [Ansible](http://www.ansible.com/).
 
 
 Requirements
