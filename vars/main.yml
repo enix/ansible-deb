@@ -18,3 +18,7 @@ deb__repos:
       - "deb http://archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }}-backports main restricted {{ 'universe' if deb__ubuntu_universe else ''}} {{ 'multiverse' if deb__ubuntu_multiverse else ''}}"
     updates:
       - "deb http://archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }}-updates main restricted {{ 'universe' if deb__ubuntu_universe else ''}} {{ 'multiverse' if deb__ubuntu_multiverse else ''}}"
+
+deb__distro_sources:
+  - /etc/apt/sources.list
+  - /etc/apt/sources.list.d/{{ ansible_distribution_release }}.list

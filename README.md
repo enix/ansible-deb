@@ -18,12 +18,13 @@ Role Variables
 
 This roles comes preloaded with almost every available default. You can override each one in your hosts/group vars, in your inventory, or in your play. See the annotated defaults in `defaults/main.yml` for help in configuration. All provided variables start with `deb__`.
 
-- `deb__distribution` - Distribution selected for source software installation. Default to `{{ ansible_distribution }}`. Options are ["Debian", "Ubuntu"].
+- `deb__distribution` - Distribution selected for source software installation. Default to `{{ ansible_distribution }}`. Options are `["Debian", "Ubuntu"]`.
 - `deb__release` - Distribution release software suite. Default to `{{ ansible_distribution_release }}`. Can be override for release upgrade for example.
-- `deb__backports` - Enable the backports repository. *Only supported on stable distributions*. Default: false.
-- `deb__updates` - Enable the updates repository. *Only supported on stable distributions*. Default: false.
-- `deb__ubuntu_universe` - Enable the universe section of Ubuntu repositories. Default: true.
-- `deb__ubuntu_multiverse` - Enable the multiverse section of Ubuntu repositories. Default: true.
+- `deb__backports` - Enable the backports repository. *Only supported on stable distributions*. Default: `false`.
+- `deb__updates` - Enable the updates repository. *Only supported on stable distributions*. Default: `false`.
+- `deb__ubuntu_universe` - Enable the universe section of Ubuntu repositories. Default: `true`.
+- `deb__ubuntu_multiverse` - Enable the multiverse section of Ubuntu repositories. Default: `true`.
+- `deb__clean_sources` - Remove existing sources. Default is false, options are `["distribution", "all"]`. _"distribution"_ clean `/etc/apt/sources.list` whereas _"all"_ clean all `*.list` found files.
 
 Dependencies
 ------------
@@ -74,12 +75,11 @@ Still to do
 - Add Devuan support
 - Add update, dist-upgrade, autoremove, clean tasks
 - Add option to add src repositories
-- Move final update task to a handler if repo changed
 
 Changelog
 ---------
 
-### 0.1
+### 1.0
 
 Initial version.
 

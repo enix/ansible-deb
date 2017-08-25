@@ -5,16 +5,30 @@
     msg: "This is not a Debian based distribution"
   when: ansible_os_family != "Debian"
 
-# - name : Make sure we don't have debian wheezy repos
-#   file:
-#     dest: /etc/apt/sources.list.d/wheezy.list
-#     state: absent
-#
-# - name: Remove original repo
-#   file:
-#     dest: /etc/apt/sources.list
-#     state: absent
-#     backup: yes
+- name: "Cleaning distribution included repositories lists"
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "{{ deb__distro_sources }}"
+  when: deb__clean_sources == "distribution"
+
+- name: "Listing existing repositories lists"
+  find:
+    path: /etc/apt
+    file_type: file
+    patterns: "*.list"
+    recurse: true
+  when: deb__clean_sources == "all"
+  register: sourcesd_files
+
+- name: "Cleaning all existing repositories lists"
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  with_items:
+    - "{{ sourcesd_files.files }}"
+  when: (deb__clean_sources == "all")
 
 # - name: Add apt proxy configuration
 #   copy:
@@ -35,7 +49,6 @@
     - "{{ deb__repos[ ansible_distribution ].base_repos }}"
   notify:
     - Update cache
-
 
 - name: Add the backports repository
   apt_repository:
