@@ -1,0 +1,5 @@
+---
+
+- name: "Retrieve new lists of packages"
+  apt:
+    update_cache: yes

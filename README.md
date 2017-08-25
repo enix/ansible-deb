@@ -34,11 +34,11 @@ Dependencies
 Extra
 -----
 
-
 Callable tasks:
 
-- `task`: ...
-
+- `update`: Retrieve new list of packages (apt-get update)
+- `dist-upgrade`: Perform a distribution upgrade (apt-get dist-upgrade)
+- `autoremove`: Remove automatically all unused packages (apt-get autoremove)
 
 Usage
 -----
@@ -72,7 +72,6 @@ Still to do
 - var to disable recommends installation
 - var to add a proxy configuration
 - Add Devuan support
-- Add update, dist-upgrade, autoremove, clean tasks
 - Add option to add src repositories
 
 Changelog
