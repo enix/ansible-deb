@@ -6,4 +6,3 @@
       deb__updates: true
       deb__ubuntu_multiverse: false
       deb__clean_sources: distribution
-      deb__extra_repositories: ["deb http://glot.net/debian/ ./"]
