@@ -50,7 +50,6 @@ Clone this repo into your roles directory:
 Or use Ansible galaxy requirements.yml
 
     # deb from eNiXHosting
-    # public role
     - src: eNiXHosting.deb
       name: deb
 
@@ -59,7 +58,8 @@ And add it to your play's roles:
     - hosts: all
       roles:
         - role deb:
-            deb__var: true
+            deb__backports: true
+            deb__updates: true
 
 You can also use the role as a playbook. You will be asked which hosts to provision, and you can further configure the play by using `--extra-vars`.
 
