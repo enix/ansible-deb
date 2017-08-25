@@ -2,3 +2,6 @@
 - hosts: test
   roles:
     - role: '../../.'
+      deb__backports: true
+      deb__stable_updates: true
+      deb__ubuntu_multiverse: false
