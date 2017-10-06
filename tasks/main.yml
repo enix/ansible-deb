@@ -88,3 +88,5 @@
   with_items:
     - "{{ deb__extra_repositories }}"
   notify: Update cache
+
+- meta: flush_handlers
