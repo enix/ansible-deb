@@ -78,6 +78,10 @@ Still to do
 Changelog
 ---------
 
+### 1.1
+
+Add handlers flush
+
 ### 1.0
 
 Initial version.
