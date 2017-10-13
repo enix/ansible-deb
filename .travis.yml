@@ -12,11 +12,10 @@ env:
       distribution_version: trusty
       init: /sbin/init
       run_opts: ""
-# comment out stretch until we fix daemon issue
-    # - distribution: Debian
-    #   distribution_version: stretch
-    #   init: /usr/local/bin/davedaemon
-    #   run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    - distribution: Debian
+      distribution_version: stretch
+      init: /lib/systemd/systemd
+      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
     - distribution: Debian
       distribution_version: jessie
       init: /lib/systemd/systemd
