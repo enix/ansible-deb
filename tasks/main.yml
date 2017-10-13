@@ -11,6 +11,15 @@
     state: present
   when: ansible_distribution == "Debian"
 
+- name: "Installing empty sources.list"
+  copy:
+    src: sources.list
+    dest: /etc/apt/sources.list
+    mode: 0444
+    owner: root
+    group: root
+    backup: yes
+
 - name: "Cleaning distribution included repositories lists"
   file:
     path: "{{ item }}"
@@ -21,7 +30,7 @@
 
 - name: "Listing existing repositories lists"
   find:
-    path: /etc/apt
+    path: /etc/apt/sources.list.d/
     file_type: file
     patterns: "*.list"
     recurse: true
@@ -34,7 +43,7 @@
     state: absent
   with_items:
     - "{{ sourcesd_files.files }}"
-  when: (deb__clean_sources == "all")
+  when: deb__clean_sources == "all"
 
 # - name: Add apt proxy configuration
 #   copy:

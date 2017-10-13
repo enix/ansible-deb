@@ -1,0 +1,3 @@
+# Empty sources.list installed by eNiXHosting.deb ansible role
+# All packages repositories must be configured into /etc/apt/sources.list.d/
+# For usage see https://galaxy.ansible.com/eNiXHosting/deb/

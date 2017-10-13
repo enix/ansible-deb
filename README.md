@@ -78,6 +78,9 @@ Still to do
 Changelog
 ---------
 
+### 1.2
+Change erase of sources.list into empty file installation
+
 ### 1.1
 
 Add handlers flush
