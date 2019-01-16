@@ -1,4 +1,4 @@
-eNiXHosting.deb
+enix.deb
 =================
 
 A role for deploying and configuring deb software sources list on Debian based distributions using [Ansible](http://www.ansible.com/).
@@ -47,19 +47,18 @@ Usage
 
 Clone this repo into your roles directory:
 
-    $ git clone https://gitlab.enix.org/ansible/ansible-deb.git roles/deb
+    $ git clone https://github.com/enix/ansible-deb.git roles/enix.deb
 
 Or use Ansible galaxy requirements.yml
 
-    # deb from eNiXHosting
-    - src: eNiXHosting.deb
-      name: deb
+    # deb from enix
+    - src: enix.deb
 
 And add it to your play's roles:
 
     - hosts: all
       roles:
-        - role deb:
+        - role enix.deb:
             deb__backports: true
             deb__updates: true
 
@@ -77,6 +76,8 @@ Still to do
 
 Changelog
 ---------
+### 1.3
+Change to enix.deb role name
 
 ### 1.2
 Change erase of sources.list into empty file installation
@@ -97,4 +98,4 @@ GPLv2
 Author Information
 ------------------
 
-Laurent Corbes <laurent.corbes@enix.fr> - http://www.enix.fr
+Laurent Corbes <laurent.corbes@enix.fr> - http://www.enix.io
