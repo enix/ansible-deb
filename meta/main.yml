@@ -1,7 +1,8 @@
 galaxy_info:
+  role_name: deb
   author: Laurent Corbes
   description: Ansible role to deploy software repositories on Debian based distributions
-  company: Enix Hosting (http://www.enix.fr)
+  company: Enix Hosting (http://www.enix.io)
   license: license GPLv2
 
   min_ansible_version: 2.1
