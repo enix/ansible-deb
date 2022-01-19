@@ -2,4 +2,4 @@
 # handlers file for $ROLE
 
 - name: Update cache
-  include: update.yml
+  include_tasks: update.yml
