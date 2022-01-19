@@ -53,7 +53,7 @@
 #     group: root
 #     backup: yes
 
-- name: Add the base repositories (include security)
+- name: Add the base repositories
   apt_repository:
     repo: "{{ item }}"
     mode: 0644
@@ -61,6 +61,16 @@
     update_cache: no
   with_items:
     - "{{ deb__repos[ ansible_distribution ].base_repos }}"
+  notify: Update cache
+
+- name: Add the security repositories
+  apt_repository:
+    repo: "{{ item }}"
+    mode: 0644
+    state: present
+    update_cache: no
+  with_items:
+    - "{{ deb__repos[ ansible_distribution ].security_repos }}"
   notify: Update cache
 
 - name: Add the backports repository
