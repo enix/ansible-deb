@@ -5,4 +5,4 @@
       deb__backports: false
       deb__updates: true
       deb__ubuntu_multiverse: false
-      deb__clean_sources: all
+      deb__clean_sources: distribution
