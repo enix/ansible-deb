@@ -52,3 +52,11 @@ ubuntu-trusty:
 ubuntu-xenial:
   image: ansiblecheck/ansiblecheck:ubuntu-xenial
   <<: *ansible_test
+
+ubuntu-bionic:
+  image: ansiblecheck/ansiblecheck:ubuntu-bionic
+  <<: *ansible_test
+
+ubuntu-focal:
+  image: ansiblecheck/ansiblecheck:ubuntu-xenial
+  <<: *ansible_test
