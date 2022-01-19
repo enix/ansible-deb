@@ -2,7 +2,7 @@
 - hosts: test
   roles:
     - role: '../../.'
-      deb__backports: true
+      deb__backports: false
       deb__updates: true
       deb__ubuntu_multiverse: false
-      deb__clean_sources: distribution
+      deb__clean_sources: all
