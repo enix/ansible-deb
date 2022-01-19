@@ -38,11 +38,11 @@ debian-stretch:
   <<: *ansible_test
 
 debian-buster:
-  image: ansiblecheck/ansiblecheck:debian-buster
+  image: registry.gitlab.com/lcaflc/ansiblecheck:debian-buster
   <<: *ansible_test
 
 debian-bullseye:
-  image: ansiblecheck/ansiblecheck:debian-bullseye
+  image: registry.gitlab.com/lcaflc/ansiblecheck:debian-bullseye
   <<: *ansible_test
 
 ubuntu-trusty:
@@ -54,9 +54,9 @@ ubuntu-xenial:
   <<: *ansible_test
 
 ubuntu-bionic:
-  image: ansiblecheck/ansiblecheck:ubuntu-bionic
+  image: registry.gitlab.com/lcaflc/ansiblecheck:ubuntu-bionic
   <<: *ansible_test
 
 ubuntu-focal:
-  image: ansiblecheck/ansiblecheck:ubuntu-focal
+  image: registry.gitlab.com/lcaflc/ansiblecheck:ubuntu-focal
   <<: *ansible_test
