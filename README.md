@@ -76,6 +76,10 @@ Still to do
 
 Changelog
 ---------
+### 1.4
+Add debian 11 bullseye support
+Add Ubuntu 20.04 focal support
+Fix handlers for newer ansible versions
 ### 1.3
 Change to enix.deb role name
 
