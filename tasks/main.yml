@@ -5,20 +5,19 @@
     msg: "This is not a Debian based distribution"
   when: ansible_os_family != "Debian"
 
-- name: "Install python-apt"
-  apt:
-    name: python-apt
-    state: present
-  when: ansible_distribution == "Debian"
+# - name: "Install python-apt"
+#   apt:
+#     name: python-apt
+#     state: present
+#   when: (ansible_distribution == "Debian" and ansible_distribution_release_major < 11) or
+#         (ansible_distribution == "Ubuntu" and ansible_distribution_release_major < 18 )
 
-- name: "Installing empty sources.list"
-  copy:
-    src: sources.list
-    dest: /etc/apt/sources.list
-    mode: 0444
-    owner: root
-    group: root
-    backup: yes
+# - name: "Install python3-apt"
+#   apt:
+#     name: python3-apt
+#     state: present
+#   when: (ansible_distribution == "Debian" and ansible_distribution_release_major >= 11 ) or
+#         (ansible_distribution == "Ubuntu" and ansible_distribution_release_major >= 18 )
 
 - name: "Cleaning distribution included repositories lists"
   file:
@@ -96,6 +95,16 @@
     update_cache: no
   with_items:
     - "{{ deb__extra_repositories }}"
+  notify: Update cache
+
+- name: "Installing empty sources.list"
+  copy:
+    src: sources.list
+    dest: /etc/apt/sources.list
+    mode: 0444
+    owner: root
+    group: root
+    backup: yes
   notify: Update cache
 
 - meta: flush_handlers
