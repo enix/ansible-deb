@@ -37,6 +37,14 @@ debian-stretch:
   image: ansiblecheck/ansiblecheck:debian-stretch
   <<: *ansible_test
 
+debian-buster:
+  image: ansiblecheck/ansiblecheck:debian-buster
+  <<: *ansible_test
+
+debian-bullseye:
+  image: ansiblecheck/ansiblecheck:debian-bullseye
+  <<: *ansible_test
+
 ubuntu-trusty:
   image: ansiblecheck/ansiblecheck:ubuntu-trusty
   <<: *ansible_test
