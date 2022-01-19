@@ -58,5 +58,5 @@ ubuntu-bionic:
   <<: *ansible_test
 
 ubuntu-focal:
-  image: ansiblecheck/ansiblecheck:ubuntu-xenial
+  image: ansiblecheck/ansiblecheck:ubuntu-focal
   <<: *ansible_test
